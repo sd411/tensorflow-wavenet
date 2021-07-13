@@ -9,6 +9,7 @@ import os
 import librosa
 import numpy as np
 import tensorflow as tf
+import soundfile as sf
 
 from wavenet import WaveNetModel, mu_law_decode, mu_law_encode, audio_reader
 
@@ -112,7 +113,8 @@ def get_arguments():
 
 def write_wav(waveform, sample_rate, filename):
     y = np.array(waveform)
-    librosa.output.write_wav(filename, y, sample_rate)
+    #librosa.output.write_wav(filename, y, sample_rate)
+    sf.write(filename,waveform,sample_rate)
     print('Updated wav file at {}'.format(filename))
 
 
